@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App con cristian" />
-  </div>
+  <form @submit.prevent="procesarForm">
+    <Input :tareas="tareas" />
+  </form>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import Input from "../components/Input";
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    Input,
+  },
+  data() {
+    return {
+      tareas: {
+        nombre: "",
+        cursos: [],
+        estado: "",
+        edad: "",
+      },
+    };
+  },
+
+  methods: {
+    procesarForm() {
+      console.log(this.tareas);
+    },
   },
 };
 </script>
