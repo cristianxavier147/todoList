@@ -33,7 +33,7 @@
   <!-- input number -->
   <input type="number" class="form form-control my-4" v-model.number="tareas.edad" />
   <!-- input submit -->
-  <input type="submit" class="form form-control btn btn-warning my-2" />
+  <input type="submit" class="form form-control btn btn-warning my-2" :disabled="disabledBtn" />
   {{ tareas }}
 </template>
 
@@ -41,6 +41,11 @@
 export default {
   name: "Input",
   props: ["tareas"],
+  computed: {
+    disabledBtn() {
+      return this.tareas.nombre.trim() === "" ? true : false;
+    },
+  },
 };
 </script>
 
