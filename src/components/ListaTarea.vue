@@ -19,6 +19,17 @@
         <td>{{ tarea.edad }}</td>
         <td>
           <button class="btn btn-danger btn-sm" @click="eliminarTarea(tarea.id)">Eliminar</button>
+          <router-link
+            :to="{
+              name: 'Editar',
+              params: {
+                id: tarea.id,
+              },
+            }"
+            class="btn btn-warning btn-sm mx-1"
+          >
+            Editar
+          </router-link>
         </td>
       </tr>
     </tbody>

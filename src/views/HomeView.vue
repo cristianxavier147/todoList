@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="procesarForm">
-    <Input :tareas="tareas" />
+    <Input :tarea="tarea" />
     <ListaTarea />
   </form>
 </template>
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      tareas: {
+      tarea: {
         id: "",
         nombre: "",
         cursos: [],
@@ -31,19 +31,16 @@ export default {
   methods: {
     ...mapActions(["setTarea"]),
     procesarForm() {
-      if (this.tareas.nombre.trim() === "") {
+      if (this.tarea.nombre.trim() === "") {
         console.log("falta llenar datos");
         return;
       }
 
-      //enviar data a store
-      console.log("datos llenados");
+      this.tarea.id = shortid.generate();
 
-      this.tareas.id = shortid.generate();
-
-      this.setTarea(this.tareas);
+      this.setTarea(this.tarea);
       //resetear form
-      this.tareas = {
+      this.tarea = {
         id: "",
         nombre: "",
         cursos: [],
